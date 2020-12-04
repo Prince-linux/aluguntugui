@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Aluguntugui</title>
+    <link rel="stylesheet" href="{% static 'core/bulma/bulma.min.css' %}">
+    <link rel="stylesheet" href="{% static 'core/ficons/font.css' %}">
+    {% block css %}{% endblock %}
+    {% block javascript-head %}{% endblock %}
+  </head>
+
+  <body class="has-navbar-fixed-top">
+    <nav class="navbar has-shadow is-fixed-top">
+      <div class="navbar-brand">
+	<a class="navbar-item" href="#">
+	  <img src="{% static 'core/aluguntugui-logo-small.png' %}">
+	</a>
+      </div>
+
+      <div class="navbar-start">
+	{% block navbar-start %}{% endblock %}
+      </div>
+
+      <div class="navbar-end">
+	{% block navbar-end %}{% endblock %}
+      </div>
+    </nav>
+
+    <main class="section">
+      <div class="container">
+	{% block page-title %}{% endblock %}
+
+	{% if messages %}
+	  {% for message in messages %}
+	    <div class="notification{% if message.tags %} {{ message.tags }}{% endif  %}">
+	      <p>{{ message }}</p>
+	    </div>
+	  {% endfor %}
+	{% endif %}
+	  
+	{% block main %}{% endblock %}
+      </div>
+    </main>
+      
+    <footer class="footer">
+      <div class="content has-text-centered">
+	Copyright &copy; 2020 Lorenzo Cabrini
+      </div>
+    </footer>
+  </body>
+</html>
