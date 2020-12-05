@@ -30,5 +30,7 @@ def register(request):
             return redirect('home')
     else:
         form = RegistrationForm()
-    return render(request, 'core/registration.html', {'form': form})
-    
+    return render(request, 'core/registration.html', {
+        'form': form,
+        'page_title': 'Registration',
+    })
