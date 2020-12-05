@@ -27,6 +27,47 @@
 
       <div class="navbar-end">
 	{% block navbar-end %}{% endblock %}
+
+	{% if not user.is_authenticated %}
+	  <div class="navbar-item">
+	    <form method="post" action="{% url 'login' %}">
+	      {% csrf_token %}
+	      <div class="field is-horizontal">
+		<div class="field-body">
+		  <div class="field">
+		    <p class="control has-icons-left">
+		      <input class="input" type="text" name="username" placeholder="Username" size="8">
+		      <span class="icon is-small is-left">
+			<i class="fa fa-user"></i>
+		      </span>
+		    </p>
+		  </div>
+
+		  <div class="field">
+		    <p class="control has-icons-left">
+		      <input class="input" type="password" name="password" placeholder="Password" size="8">
+		      <span class="icon is-small is-left">
+			<i class="fa fa-lock"></i>
+		      </span>
+		    </p>
+		  </div>
+
+		  <div class="field">
+		    <p class="control">
+		      <input class="button is-success" type="submit" value="Login">
+		    </p>
+		  </div>
+		</div>
+	      </div>
+	    </form>
+	    
+	    <a class="button" href="#">Register</a>
+	  </div>
+	{% else %}
+	  <div class="navbar-item">
+	    <a class="button is-danger" href="{% url 'logout' %}">Logout</a>
+	  </div>
+	{% endif %}
       </div>
     </nav>
 
@@ -41,11 +82,11 @@
 	    </div>
 	  {% endfor %}
 	{% endif %}
-	  
+	
 	{% block main %}{% endblock %}
       </div>
     </main>
-      
+    
     <footer class="footer">
       <div class="content has-text-centered">
 	Copyright &copy; 2020 Lorenzo Cabrini
