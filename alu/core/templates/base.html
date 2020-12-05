@@ -61,7 +61,7 @@
 	      </div>
 	    </form>
 	    
-	    <a class="button" href="#">Register</a>
+	    <a class="button" href="{% url 'register' %}">Register</a>
 	  </div>
 	{% else %}
 	  <div class="navbar-item">
@@ -81,6 +81,21 @@
 	      <p>{{ message }}</p>
 	    </div>
 	  {% endfor %}
+	{% endif %}
+
+	{% if form %}
+	  {% if form.errors %}
+	    <div class="notification is-danger">
+	      <p>You have the following errors:</p>
+	      <ol>
+		{% for field in form %}
+		  {% for error in field.errors %}
+		    <li>{{ error|escape }}</li>
+		  {% endfor %}
+		{% endfor %}
+	      </ol>
+	    </div>
+	  {% endif %}
 	{% endif %}
 	
 	{% block main %}{% endblock %}
