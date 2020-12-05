@@ -73,7 +73,9 @@
 
     <main class="section">
       <div class="container">
-	{% block page-title %}{% endblock %}
+	{% if page_title %}
+	  <h2 class="title is-title-2">{{ page_title }}</h2>
+	{% endif %}
 
 	{% if messages %}
 	  {% for message in messages %}
