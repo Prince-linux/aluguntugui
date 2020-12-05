@@ -119,3 +119,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Messages
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.SUCCESS: 'is-success',
+    messages.WARNING: 'is-warning',
+    messages.ERROR: 'is-danger',
+}
