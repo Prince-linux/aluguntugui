@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_q',
     'alu.core',
 ]
 
@@ -127,3 +128,22 @@ MESSAGE_TAGS = {
     messages.WARNING: 'is-warning',
     messages.ERROR: 'is-danger',
 }
+
+# Django Q
+Q_CLUSTER = {
+    'name': 'aluguntugui',
+    'orm': 'default',
+}
+
+# Host
+HOST = 'http://localhost:8000'
+
+# Email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  
+MAILER_EMAIL_BACKEND = EMAIL_BACKEND  
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_PASSWORD = '<insert password>'  
+EMAIL_HOST_USER = '<insert email addresss>'  
+EMAIL_PORT = 465  
+EMAIL_USE_SSL = True  
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
