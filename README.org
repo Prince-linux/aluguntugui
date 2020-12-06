@@ -1,0 +1,75 @@
+#+TITLE: Aluguntugui
+
+* About
+
+* Requirments
+You will need Python. At the time I writing, I'm using 3.8.6.
+
+You will also need a database server. Actually, for local testing and 
+development, SQLite is fine.
+* Installation
+Start by creating a virtual environment
+
+#+begin_src bash
+$ python -m venv .venv
+$ source .venv/bin/activate
+#+end_src
+
+Once you have activated the virtual environment, you need to pull down the
+python requirements.
+
+#+begin_src bash
+$ pip install -r requirements.txt
+#+end_src
+* Configuration
+** The Settings File
+Before you can begin to use Aluguntugui, you will need to configure it. 
+The default settings file is =aluguntugui/settings.py=. It is probably better
+to make a copy of this in order to mistakenly push sensitive information to
+git. A good name would be =local_settings.py=, since this file is gitignored.
+To get django to use this file instead, you need to set an environment 
+variable as follows:
+
+#+begin_src bash
+export DJANGO_SETTINGS_MODULE=aluguntugui.local_settings
+#+end_src
+** Email Configuration
+Open your settings file and find the email settings. If you are using Gmail,
+you only need to set EMAIL_HOST_USER and EMAIL_HOST_PASSWORD to your email
+address and Google password.
+
+#+begin_src python
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+MAILER_EMAIL_BACKEND = EMAIL_BACKEND
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_PASSWORD = '<password>'
+EMAIL_HOST_USER = '<email>'
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+#+end_src
+
+Note that Google may reject your connection attempt. If you use 2FA, you will
+need to create an app password. If you are not using 2FA, you need to make
+sure that 'allow insecure apps' is enabled. From time to time, it may still
+fail and you may have to log in to Gmail and do a captcha verification.
+
+* Running
+You need to start two different 
+* Plans
+** 0.1 [1/13]
+- [X] registration
+- [ ] rename home view to index to avoid confusion
+- [ ] delete users that haven't activated their account before expiration
+- [ ] redirect logged-in user to their pesonal home page
+- [ ] some basic information on the index page for unauthenticated visitors
+- [ ] reset password
+- [ ] remember me
+- [ ] change password form
+- [ ] user profile
+- [ ] logging
+- [ ] launch script
+- [ ] about us page
+- [ ] dockerize
+** 0.2 [/]
+- [ ] chat-based virtual classroom
