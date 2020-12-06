@@ -1,0 +1,13 @@
+{% autoescape off %}
+  Hi {{ user.username }},
+
+  Click on the link to confirm your registration.
+
+  {{ host }}{% url 'activate' uidb64=uid token=token %}
+
+  If you think you have recieved this email in error than you can safely
+  ignore it.
+
+  Best regards,
+  The Alaguntugui Team
+{% endautoescape %}
