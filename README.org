@@ -57,7 +57,7 @@ fail and you may have to log in to Gmail and do a captcha verification.
 * Running
 You need to start two different 
 * Plans
-** 0.1 [1/13]
+** 0.1 [2/15]
 - [X] registration
 - [ ] rename home view to index to avoid confusion
 - [ ] delete users that haven't activated their account before expiration
@@ -68,8 +68,10 @@ You need to start two different
 - [ ] change password form
 - [ ] user profile
 - [ ] logging
-- [ ] launch script
+- [X] launch script
 - [ ] about us page
 - [ ] dockerize
+- [ ] create admin account automatically
+- [ ] middleware to check that admin password is not the default
 ** 0.2 [/]
 - [ ] chat-based virtual classroom
