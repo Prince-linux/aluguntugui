@@ -1,7 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Profile
 
 def home(request):
-    return render(request, 'profiles/home.html', {
-        'profile': request.user.profile,
-    })
+    if request.user.is_authenticated:
+        return render(request, 'profiles/home.html', {
+            'profile': request.user.profile,
+        })
+    else:
+        return redirect('home')
