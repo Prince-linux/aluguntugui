@@ -7,7 +7,10 @@ from django.contrib.auth.tokens import default_token_generator
 from .forms import RegistrationForm
 
 def home(request):
-    return render(request, 'core/home.html')
+    if request.user.is_authenticated:
+        return redirect('profiles:home')
+    else:
+        return render(request, 'core/home.html')
 
 def login(request):
     username = request.POST.get("username")
