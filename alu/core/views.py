@@ -6,11 +6,11 @@ from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth.tokens import default_token_generator
 from .forms import RegistrationForm
 
-def home(request):
+def index(request):
     if request.user.is_authenticated:
         return redirect('profiles:home')
     else:
-        return render(request, 'core/home.html')
+        return render(request, 'core/index.html')
 
 def login(request):
     username = request.POST.get("username")
@@ -18,14 +18,14 @@ def login(request):
     user = auth.authenticate(request, username=username, password=password)
     if user is not None:
         auth.login(request, user)
-        return redirect('home')
+        return redirect('profiles:home')
     else:
         messages.error(request, "Authentication failed")
-        return redirect('home')
+        return redirect('index')
 
 def logout(request):
     auth.logout(request)
-    return redirect('home')
+    return redirect('index')
     
 def register(request):
     if request.method == 'POST':
