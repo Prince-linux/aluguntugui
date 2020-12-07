@@ -10,7 +10,6 @@ from .models import QueuedEmail
 def create_activation(sender, instance, created, **kwargs):
     if created:
         user = instance
-        print("In signal, user: {}".format(user))
         data = {
             'host': settings.HOST,
             'uid': urlsafe_base64_encode(force_bytes(user.pk)),
