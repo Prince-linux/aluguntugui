@@ -17,6 +17,7 @@ class RegistrationForm(UserCreationForm):
         data = self.cleaned_data['email']
         if User.objects.filter(email=data).count() > 0:
             raise ValidationError("A user with that email already exists")
+        return data
         
     class Meta:
         model = User
