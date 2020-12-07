@@ -7,4 +7,4 @@ def home(request):
             'profile': request.user.profile,
         })
     else:
-        return redirect('home')
+        return redirect('index')
