@@ -14,15 +14,18 @@ def index(request):
         return render(request, 'core/index.html')
 
 def login(request):
-    username = request.POST.get("username")
-    password = request.POST.get("password")
-    user = auth.authenticate(request, username=username, password=password)
-    if user is not None:
-        auth.login(request, user)
-        return redirect('profiles:view', user.id)
+    if request.method == 'POST':
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        user = auth.authenticate(request, username=username, password=password)
+        if user is not None:
+            auth.login(request, user)
+            return redirect('profiles:view', user.id)
+        else:
+            messages.error(request, "Authentication failed")
+            return redirect('login')
     else:
-        messages.error(request, "Authentication failed")
-        return redirect('index')
+        return render(request, 'core/login.html')
 
 def logout(request):
     auth.logout(request)
