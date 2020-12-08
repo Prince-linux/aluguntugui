@@ -122,6 +122,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# Login/logout
+LOGIN_URL = '/login/'
+
 # Messages
 from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
