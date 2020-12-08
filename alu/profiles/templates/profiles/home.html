@@ -5,3 +5,36 @@
 
   <p>For now, this is you: <strong>{{ profile.user.username }}</strong></p>
 {% endblock %}
+
+{% block below-main %}
+  <div class="section">
+    <div class="container">
+      <h1 class="title title-is-2">Timeline</h1>
+
+      {% for date, activities in timeline.items %}
+	<div class="columns">
+	  <div class="column is-2">
+	    {{ date }}
+	  </div>
+
+	  <div class="column">
+	    {% if activities.0 %}
+	      {{ activities.0 }}
+	    {% else %}
+	      <p class="has-text-grey-light"><i>No activies</i></p>
+	    {% endif %}
+	  </div>
+	</div>
+
+	{% for activity in activities|slice:"1:" %}
+	  <div class="columns">
+	    <div class="column is-2"></div>
+	    <div class="column">
+	      {{ activity }}
+	    </div>
+	  </div>
+	{% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
