@@ -9,7 +9,7 @@ from .forms import RegistrationForm
 
 def index(request):
     if request.user.is_authenticated:
-        return redirect('profiles:home')
+        return redirect('profiles:view', request.user.id)
     else:
         return render(request, 'core/index.html')
 
@@ -19,7 +19,7 @@ def login(request):
     user = auth.authenticate(request, username=username, password=password)
     if user is not None:
         auth.login(request, user)
-        return redirect('profiles:home')
+        return redirect('profiles:view', user.id)
     else:
         messages.error(request, "Authentication failed")
         return redirect('index')
