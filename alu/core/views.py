@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 from django.contrib import messages
 from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth.tokens import default_token_generator
+from alu.profiles.models import Timeline
 from .forms import RegistrationForm
 
 def index(request):
@@ -54,6 +55,7 @@ def activate(request, uidb64, token):
     if user is not None and default_token_generator.check_token(user, token):
         user.is_active = True
         user.save()
+        Timeline.objects.create(user=user, activity="Registration completed")
         return render(request, 'core/activated.html', {
             'page_title': 'Account Active',
         })
@@ -61,5 +63,3 @@ def activate(request, uidb64, token):
         return render(request, 'core/activation_failed.html', {
             'page_title': 'Activation Failed',
         })
-    
-    
