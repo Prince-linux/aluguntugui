@@ -57,7 +57,7 @@ fail and you may have to log in to Gmail and do a captcha verification.
 * Running
 You need to start two different 
 * Plans
-** 0.1 [7/21]
+** 0.1 [8/21]
 - [X] registration
 - [X] rename home view to index to avoid confusion
 - [ ] delete users that haven't activated their account before expiration
@@ -75,7 +75,7 @@ You need to start two different
 - [ ] middleware to check that admin password is not the default
 - [X] user's emails should be unique
 - [X] replace Activation model class with generic QueuedEmail
-- [ ] user timeline
+- [X] user timeline
 - [ ] badges
 - [ ] scoring
 - [ ] page view counter
