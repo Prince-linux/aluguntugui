@@ -1,0 +1,72 @@
+{% load static %}
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Aluguntugui</title>
+    <link rel="stylesheet" href="{% static 'core/bulma/bulma.min.css' %}">
+    <link rel="stylesheet" href="{% static 'core/ficons/font.css' %}">
+    {% block css %}{% endblock %}
+    {% block javascript-head %}{% endblock %}
+  </head>
+
+  <body>
+    <div class="hero is-fullheight has-background-info">
+      <div class="hero-body">
+	<div class="container has-text-centered">
+	  <div class="column is-6 is-offset-3">
+	    <div class="box">
+	      <div class="box">
+		<img src="{% static 'core/aluguntugui-logo-small.png' %}">
+	      </div>
+
+	      {% if form.errors %}
+		<div class="notification is-danger">
+		  Authentication failed
+		</div>
+	      {% endif %}
+	      
+	      <div class="title has-text-grey is-5">
+		Login
+	      </div>
+
+	      <form method="post">
+		{% csrf_token %}
+
+		<div class="field">
+		  <div class="control has-icon has-icons-left">
+		    <input class="input" 
+			   type="text" 
+			   name="{{ form.username.name }}" 
+			   placeholder="Username" 
+			   autofocus>
+		    <span class="icon is-small is-left">
+		      <i class="fa fa-user"></i>
+		    </span>
+		  </div>
+		</div>
+
+		<div class="field">
+		  <div class="control has-icon has-icons-left">
+		    <input class="input"
+			   type="password"
+			   name="{{ form.password.name }}"
+			   placeholder="Password">
+		    <span class="icon is-small is-left">
+		      <i class="fa fa-lock"></i>
+		    </span>
+		  </div>
+		</div>
+
+		<button class="button is-block is-success is-fullwidth">
+		  Login
+		</button>
+	      </form>
+	    </div>
+	  </div>
+	</div>
+      </div>
+    </div>
+  </body>
+</html>
