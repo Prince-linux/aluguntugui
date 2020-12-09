@@ -8,7 +8,6 @@ from .models import QueuedEmail
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 def create_activation(sender, instance, created, **kwargs):
-    print("In activation signal")
     if created:
         user = instance
         data = {
@@ -18,5 +17,5 @@ def create_activation(sender, instance, created, **kwargs):
         }
         QueuedEmail.objects.create(user=user,
                                    subject='Activate your account',
-                                   template='core/activation_email.html',
+                                   template='emailer/activation_email.html',
                                    data=data)
