@@ -19,4 +19,3 @@ def send_emails():
             qe.delete()
         except Exception as e:
             print("Failed to send email: {}".format(e))
-            

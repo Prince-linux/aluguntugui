@@ -8,6 +8,7 @@ from .models import QueuedEmail
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 def create_activation(sender, instance, created, **kwargs):
+    print("In activation signal")
     if created:
         user = instance
         data = {
