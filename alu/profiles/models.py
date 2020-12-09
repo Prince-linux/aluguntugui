@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta, timezone
+from datetime import date, timedelta
 from django.db import models
 from django.conf import settings
 
@@ -13,11 +13,12 @@ class Profile(models.Model):
 class TimelineManager(models.Manager):
     def get_user_timeline(self, user, days=7):
         # TODO: date format should be configurable
-        oldest = Timeline.objects.filter(user=user).earliest('timestamp').timestamp
-        today = datetime.now(timezone.utc)
+        o = Timeline.objects.filter(user=user).earliest('timestamp').timestamp
+        oldest = date(o.year, o.month, o.day)
+        today = date.today()
         delta = (today - oldest).days
         if delta < days:
-            days = delta + 1
+            days = delta
         first = today - timedelta(days=days)
         dr = [d for d in (today - timedelta(days=n) for n in range(days+1))]
         timeline = {d.strftime("%Y-%m-%d"): [] for d in dr}
@@ -37,3 +38,4 @@ class Timeline(models.Model):
     
     class Meta:
         ordering = ['-timestamp']
+
