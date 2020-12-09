@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_q',
     'alu.core',
+    'alu.emailer',
     'alu.profiles',
 ]
 
