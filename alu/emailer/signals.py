@@ -18,5 +18,5 @@ def create_activation(sender, instance, created, **kwargs):
         }
         QueuedEmail.objects.create(user=user,
                                    subject='Activate your account',
-                                   template='core/activation_email.html',
+                                   template='emailer/activation_email.html',
                                    data=data)
