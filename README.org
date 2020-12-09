@@ -57,7 +57,7 @@ fail and you may have to log in to Gmail and do a captcha verification.
 * Running
 You need to start two different 
 * Plans
-** 0.1 [10/25]
+** 0.1 [11/28]
 - [X] registration
 - [X] rename home view to index to avoid confusion
 - [ ] delete users that haven't activated their account before expiration
@@ -65,7 +65,7 @@ You need to start two different
 - [ ] some basic information on the index page for unauthenticated visitors
 - [ ] reset password
 - [ ] remember me
-- [ ] change password form
+- [ ] change password
 - [X] user profile
 - [ ] logging
 - [X] launch script
@@ -81,7 +81,10 @@ You need to start two different
 - [ ] page view counter
 - [X] view other users' profiles
 - [X] replace login form in navbar with login page
-- [ ] flatten migrations
 - [ ] notifications
+- [X] don't show timeline below registration
+- [ ] avatar field in profile
+- [ ] move email functionality into email app
+- [ ] flatten migrations
 ** 0.2 [/]
 - [ ] chat-based virtual classroom
